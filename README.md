@@ -23,8 +23,8 @@ Inspired from [thoughtbot til](https://github.com/thoughtbot/til).
 <b><font size="+2">git</font></b>
 </summary>
 
-* [Branch, clone, and fork](https://github.com/heenamkung/TIL/git/branch-clone-fork.md)
-* [Commit message conventions](https://github.com/heenamkung/TIL/git/commit-message-conventions.md)
+* [Branch, clone, and fork](https://https://github.com/heenamkung/TIL/blob/main/git/branch-clone-fork.md)
+* [Commit message conventions](https://https://github.com/heenamkung/TIL/blob/main/git/commit-message-conventions.md)
 
 </details>
 
