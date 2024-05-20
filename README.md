@@ -1,5 +1,5 @@
 # Today I Learned
-I am terrible with memorization, so maybe I should write everything down.
+A TIL project to keep a record of everything I studied.
 
 Inspired from [thoughtbot til](https://github.com/thoughtbot/til).
 
