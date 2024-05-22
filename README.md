@@ -41,7 +41,7 @@ Inspired from [thoughtbot til](https://github.com/thoughtbot/til).
 <b><font size="+2">python</font></b>
 </summary>
 
-* [Python Syntax Precautions](https://github.com/heenamkung/TIL/blob/main/python/python_basics.md)
+* [Python Basics](https://github.com/heenamkung/TIL/blob/main/python/python_basics.md)
 
 </details>
 
