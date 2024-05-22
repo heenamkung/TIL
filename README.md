@@ -35,6 +35,15 @@ Inspired from [thoughtbot til](https://github.com/thoughtbot/til).
 
 </details>
 
+</details>
+<details open>
+<summary> 
+<b><font size="+2">python</font></b>
+</summary>
+
+* [Commit message conventions](https://github.com/heenamkung/TIL/blob/main/python/python_syntax_precautions.md)
+
+</details>
 
 <details open>
 <summary> 
