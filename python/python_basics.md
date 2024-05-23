@@ -418,6 +418,19 @@ def do_sth_to_global():
 
 ```
 
+### IO
+```python
+# inp is always a string. in order to add conditions , need type conversion
+inp = input("How many do you need") # takes line input
+inp = int(input("How many do you need"))
+
+# File IO: open, close
+...
+
+# File IO: with
+
+```
+
 
 
 
