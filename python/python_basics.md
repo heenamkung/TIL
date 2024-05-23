@@ -3,6 +3,8 @@ Here are some basics I learned about python, coming from a C# background.
 
 For most of the example code below, assume they are inside the print() function. 
 
+Note that print() ends with a newline. Running multiple print(x) will result in multiple lines of x.
+
 ## Spacing
 ```
 Spaces are the preferred indentation method.
@@ -151,6 +153,13 @@ my_list.remove("foo") # ["bar", 3.14, True, False]
 my_list.extend(temp_list) # ["foo", "foo", 3.14, True, False, "temp", "values"]
 
 # Many other methods (insert, pop, clear, sort, index...)
+
+#List comprehension
+my_list = [1,2,3,4,5]
+new_list = [x for x in my_list if x > 3] # 4 5
+new_list = [x**2 for x in my_list if x > 3] # 16 25
+new_list = [x+1 for x in my_list if x > 3] # 5 6
+new_list = [str(x)+"번째" for x in my_list if x>3]  # 4번째 5번째
 ```
 
 ### Tuple
@@ -296,10 +305,118 @@ my_dict = dict.fromkeys(my_list) # returns {"foo":None, "bar":None}
 my_list = list(my_dict) # ["foo", "bar"] 
 ```
 
+## Syntax:
+### if, else, elif
+```python
+if x==5:
+    print("5") # tab or 4 space
+elif x==6:
+    print("6")
+elif x==7:
+    print("7")
+else:
+    print("not 5 6 7")
+```
+### for
+```python
+for x in range(5):
+    print(x) # 0 1 2 3 4
 
+range(2,6) # 2 3 4 5
+range(0,10,2) # 0 2 4 6 8    step = 2
 
+my_list = [1,2,3]
+for x in my_list:
+    print(x) # 1 2 3
 
+my_tuple = (1,2,3)
+for x in my_tuple:
+    print(x) # 1 2 3
 
+my_dict = {'name':'foo', 'age':25, 'height': 170}
+for x in my_dict.keys():
+    print(x)
+for y in my_dict.values():
+    print(y)
+for u, v in my_dict.items():
+    print(u, v)
+
+my_string = "apple"
+for x in my_string:
+    print(x) # apple with new lines between each character
+```
+
+### while
+```python
+x=0
+while x<5:
+    print(x)
+    x +=1 # 0 1 2 3 4
+```
+### break, continue
+```python
+for x in range(10):
+    if(x==2):
+        print(f"x is {x}")
+        continue
+    if(x==5):
+        break   
+    print(x) # 0 1 x is 2 3 4
+```
+
+### function
+```python
+#1.
+def print_price(x):
+    print(f"The price is {x} dollars")
+print_price(500) # The price is 500 dollars
+
+#2.
+def get_half_price(x):
+    return x / 2
+print(get_half_price(500)) # 250
+
+#3.
+def add_two(x, y):
+    return x+y
+print(add_two(23,123)) # 146
+
+#4.
+def give_price(isVip = False):
+    if(isVip):
+        return 5000
+    else:
+        return 7000
+print(give_price()) # 7000
+print(give_price(True)) # 5000
+
+#5.
+def get_price(isVip = False, is_Membership = False, card = False, review = False, first_time = False):
+    ...
+get_price(review = True, isVip = True) # order does NOT matter
+
+#6
+def print_multiple_customer_names(name1, name2, name3, name4 ... ) # don't know how many inputs
+def print_multiple_customer_names(*names): # can only include one * for parameters. (x, *y, *z) will cause error 
+    for n in names:
+        print(n)
+print_multiple_customer_names("hey", "i", "just", "met", 5, True, "we") # hey i just met 5 True we
+```
+
+### global variable (★)
+```python
+message = "i'm global"
+
+def do_sth():
+    message = "i'm local" # creates a LOCAL variable. It does NOT modify the global variable
+    print(message)
+
+def do_sth_to_global():
+    global message
+    message = "i'm really global" # changes global variable to "i'm really global"
+    print(message)
+
+```
 
 
 
