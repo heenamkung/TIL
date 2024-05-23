@@ -103,13 +103,14 @@ x[:-1] # pytho    0 to end-1. CAUTION
 x[:] # python
 ```
 
-### Methods
+### Methods (★)
+Strings are immutable, so ALL methods return a new string
 ```python
 x = "PYthon"
 y = "hello world haha"
 
-x.lower() # python
-x.upper() # PYTHON
+x.lower() # python    
+x.upper() # PYTHON    
 x.capitalize() # Python   capitalize first letter
 y.title() # Hello World Haha    capitalize first letter of every word) 
 y.split() # list ['hello', 'world', 'haha']
