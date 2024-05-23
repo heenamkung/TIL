@@ -22,6 +22,7 @@ if(False)
 
 ## Type Conversion
 ```python
+# Be aware that converting a non-integer string directly to an integer will cause an error.
 int('1') # 1    integer
 int('1.5') # error    it's a string not a float
 int(float('1.5')) # 1    integer
@@ -67,10 +68,10 @@ not 3<5 # False
 ## Membership Operators
 ``` python
 # in
-'c' in 'cat' # returns True
+'c' in 'cat' # True
 
 # not in
-'c' not in 'cat' # returns False
+'c' not in 'cat' # False
 ```
 
 ## Comments
@@ -128,7 +129,8 @@ f"This is {foo} and this is {bar}" # This is Foo and this is Bar    Careful of f
 f"This is \"{foo}\" and this is \"{bar}\"" # This is "FOO" and this is "BAR"     \n \' \'' are all escape characters
 ```
 
-## List
+## Data Structures
+### List
 ```python
 my_list = ["foo", "bar", 3.14, True, False] # Elements doesn't need to be type specific
 temp_list ["temp", "values"]
@@ -151,10 +153,9 @@ my_list.extend(temp_list) # ["foo", "foo", 3.14, True, False, "temp", "values"]
 # Many other methods (insert, pop, clear, sort, index...)
 ```
 
-## Tuple
-Similar to lists but uses a different syntax and CANNOT be modified. Read-only version of list
+### Tuple
+Similar to list but uses a round brackets. Also they are immutable, meaning they CANNOT be modified. Read-only version of list
 ```python
-_list = ["foo", "bar", 1] # square brackets for list
 _tuple = ("foo", "bar", 1) # round brackets for tuple
 
 # Packing and Unpacking
@@ -163,9 +164,148 @@ _tuple = ("foo", "bar", 1, 2, "baz") # packing
 
 (one, two, *others) = _tuple # asterisk(*) inserts the rest of the tuple elements inside a LIST
 *others # [1, 2, "baz"]    notice the SQUARE BRACKETS
+
 (*others, one, two) = _tuple # 
 *others # ["foo", "bar", 1]
+
 (one, *others, two) = _tuple # 
 *others # ["bar", 1, 2]
 
 ```
+
+### Set
+Unlike list or tuple, Set does NOT allow duplicate elements and does NOT preserve order
+
+Think of it as a set of foods that you want to eat. You can't have 2 lasagna elements and the order doesn't matter
+
+```python
+foo = {"candy", "chocolate", "coffee"} # curly brackets for set
+bar = {"coffee", "cake", "icecream"}
+
+foo.intersection(bar) # {"coffee"}    foo ∩ bar
+
+foo.union(bar) # {"candy", "chocolate", "coffee" , "cake", "icecream"}     foo ∪ bar
+
+foo.difference(bar) # {"candy", "chocolate"}    foo - bar
+
+
+# Can't access element by index because it is not sorted
+foo.add() # add element to set
+foo.clear() # empties set
+del foo # removes foo 
+```
+
+### Dictionary
+Composed of key and value. Duplicate keys are NOT allowed 
+
+Curly brackets like set but with : between key and value
+```python
+_dict = {key1:value1,key2:value2,key3:value3} # hard to read
+_dict = { # better readability
+    key1:value1
+    ,key2:value2
+    ,key3:value3
+}
+
+# Key supports all types
+person = { 
+    "name": "foo",
+    "age": 5,
+    "height": 175,
+    25: "string 25",
+    True: "string True"
+}
+
+# Get values
+person[True] # string True
+person[25] # string 25
+person["age"] # 5
+person["nickname"] # error    key "nickname" doesn't exist
+person.get("nickname") # None    checks if key exists and returns either the value or None
+person.get("age") # 5    
+
+# CRUD
+person["nickname"] = "bar" # add data
+person[age] = 7 # update data
+person.update({"name":"newName", "age" : 9}) # update multiple data at once
+person.pop("age") # deletes "age" key
+
+# Get keys
+keys_view = person.keys() # dict_keys(['name', 'age', 'height', 25, True, 'nickname'])    returns an object. needs conversion to use this data
+keys_list = list(keys_view)
+for key in keys_list:
+    value = person[key]
+    print(f"Key: {key}, Value: {value}") 
+'''Output:
+Key: name, Value: newName
+Key: age, Value: 9
+Key: height, Value: 175
+Key: 25, Value: text 25
+Key: True, Value: string True
+Key: nickname, Value: bar
+'''
+
+# Get every item
+person.items()
+''' 
+dict_items([('name', 'newName'), ('age', 9), ('height', 175), (25, 'text 25'), (True, 'string True'), ('nickname', 'bar')])    
+once again, it returns an object
+'''
+```
+
+### Summarize
+|             | List                         | Tuple  | Set                                 | Dictionary                |
+|-------------|------------------------------|--------|-------------------------------------|---------------------------|
+| Declaration | l = []                       | t = () | s = {}                              | d = {key:value}           |
+| Ordering    | o                            | o      | x                                   | o (python v3.7)           |
+| Duplicate   | o                            | o      | x                                   | x (key)                   |
+| Access      | l[i]                         | t[i]   | x                                   | d[key], d.get(key)        |
+| Update      | o                            | o      | x                                   | o (value only)            |
+| Add         | append(), insert(), extend() | x      | add(), update()                     | d[key] = val, update()    |
+| Delete      | remove(), pop(), clear()     | x      | remove(), discard(), pop(), clear() | pop(), popitem(), clear() |
+
+### When to use which data structure
+List: Manage multiple items in order
+
+Tuple: Manage multiple items in order that CANNOT be modified
+
+Set: Importance in whether the item exists or not, and cannot be duplicated
+
+Dictionary: Use keys to efficiently manage data
+
+### Modifying tuple by type converison
+```python
+my_tuple = ("foo", "bar")
+my_list = list(my_tuple)
+my_list.append("baz")
+my_tuple = tuple(my_list)
+```
+
+### Removing duplicates from list by type comversion.
+Using Set: ordering is NOT preserved
+```python
+my_list = ["foo", "bar", "bar", "bar"]
+my_set = set(my_list)
+my_list = list(my_set) # ["foo", "bar"] 
+```
+
+Using Dictionary: ordering IS preserved
+```python
+my_list = ["foo", "bar", "bar", "bar"]
+my_dict = dict.fromkeys(my_list) # returns {"foo":None, "bar":None}
+my_list = list(my_dict) # ["foo", "bar"] 
+```
+
+
+
+
+
+
+
+
+
+
+
+
+## Sources
+https://youtu.be/T6z-0dpXPvU?si=ucaSKc1oyySv5S2b
