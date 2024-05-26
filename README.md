@@ -42,6 +42,7 @@ Inspired from [thoughtbot til](https://github.com/thoughtbot/til).
 </summary>
 
 * [Python Basics](https://github.com/heenamkung/TIL/blob/main/python/python_basics.md)
+* [Python Notes from Coding Tests](https://github.com/heenamkung/TIL/blob/main/python/python_notes_from_coding_tests.md)
 
 </details>
 
