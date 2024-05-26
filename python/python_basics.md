@@ -3,6 +3,7 @@ Here are some basics I learned about python, coming from a C# background.
 
 For most of the example code below, assume they are inside the print() function. 
 
+## Print
 Note that print() ends with a newline. Running multiple print(x) will result in multiple lines of x.
 
 ## Spacing
@@ -422,16 +423,287 @@ def do_sth_to_global():
 ### IO
 ```python
 # inp is always a string. in order to add conditions , need type conversion
-inp = input("How many do you need") # takes line input
-inp = int(input("How many do you need"))
+inp = input("How many do you need") # takes line input, inp is string
+inp = int(input("How many do you need")) # inp is int
+```
+### File IO: open, close
+open(file_name, mode, encoding="encoding_mode")
 
-# File IO: open, close
-...
+Frequently used mode:
+- r : read
+- a : append 
+- w : write - overwrites existing file or creates new file
 
-# File IO: with
+```python
+# write
+f = open('list.txt', 'w', encoding='utf8') # utf8 for korean support
+f.write('Name1ㅋㅋ\n')
+f.write('Name2ㅋㅋ\n')
+f.close()
+
+# read whole content
+f = open('list.txt', 'r', encoding='utf8')
+contents = f.read()
+print(contents)
+f.close()
+'''output:
+Name1ㅋㅋ
+Name2ㅋㅋ
+'''
+
+# read line by line
+f = open('list.txt', 'r', encoding='utf8')
+for line is f:
+    print(line, end="") ## end is to prevent two newlines. print adds \n and Name1ㅋㅋ\n already has a newline.
+f.close()
+```
+
+### File IO: with
+Ensure resources are properly managed and released (such as closing a file). Best practice to use it when handling file io.
+```python
+#write example
+f = open('list.txt', 'w', encoding='utf8') # before with
+with open('list.txt', 'w', encoding='utf8') as f: # after with
+    f.write('Name1ㅋㅋ\n')
+    f.write('Name2ㅋㅋ\n')
+# no need for close() just leave the scope and it's already closed
+
+
+#read example
+with open('list.txt', 'r', encoding='utf8') as f:
+    contents = f.read()
+    print(contents)
+
+```
+## Class
+### Basic syntax
+```python
+class Keyboard:
+    pass # used when it is implemented later
+
+k1 = Keyboard() # creating keyboard object
+k1.name = "class80" # added name variable inside k1 instance. doesn't apply to any other instance
+print(k1.name)
+```
+### \_\_init\_\_
+
+```python
+class Keyboard:
+    def __init__(self, name, price): # starts when instance is created
+        self.name = name
+        self.price = price
+
+k1 = Keyboard("class80", 400)
+k2 = Keyboard("mr.suit", 600)
+
+
+```
+### Member variable
+```python
+class Keyboard:
+    def __init__(self, name, price): # name and price are member variable
+        self.name = name
+        self.price = price
+
+k1 = Keyboard("class80", 400)
+k1.color = "red" #only k1 instance has this variable
+k2 = Keyboard("mr.suit", 600)
+```
+### Method
+```python
+class Keyboard:
+    def __init__(self, name, price): # name and price are member variable
+        self.name = name
+        self.price = price
+    def get_name(self): # need to add 'self' when there are no parameters
+        return self.name
+    def change_name(self, name):
+        self.name = name
+
+k1 = Keyboard("class80", 400)
+print(k1.get_name()) # class80
+k1.change_name("tofu65")
+print(k1.get_name()) # class tofu
+```
+### self
+self implies the object itself (similar to this in c# or java)
+
+<b>All</b> class methods must have the first parameter as self
+
+Access member variables by using self.variable_name
+```python
+class Keyboard:
+    def __init__(self, name, price):
+        self.name = name
+        self.price = price
+
+    def print_color(self, color):
+        print(f'{self.name}\'s color is {color}')
+    
+k1 = Keyboard("class80", 400)
+k1.print_color("red") # class80's color is red
+Keyboard.print_color(k1, "red") # class80's color is red : same result
+    
+```
+
+### Inheritance
+```python
+class CustomKeyboard(Keyboard):
+    def printType(self):
+        print("Custom Keyboard")
+
+CustomKeyboard("f2 84", 300).printType() # Custom Keyboard
+```
+
+###
+super refers to parent class
+```python
+class CustomKeyboard(Keyboard):
+    def __init__(self, name, price, keys):
+        super().__init__(name, price)
+        self.keys = keys
+```
+Multiple Inheritance
+```python
+class CustomKeyboard(Keyboard, LEDScreen, KeyboardCable):
+    def __init__(self, name, price, keys):
+        super().__init__(name, price)
+        self.keys = keys
+```
+
+
+Method overriding
+```python
+class CustomKeyboard(Keyboard):
+    def printType(self):
+        print("Custom Keyboard")
+
+class AdvancedCustomKeyboard(CustomKeyboard("Link65", 400, "88")):
+    def printType(self): # Same method name causes method overriding
+        print("Advanced Custom Keyboard")
+
+```
+Pass
+```python
+class Keyboard: ## used for designing before implementation
+    def __init__(self):
+        pass
+    def do_sth(self):
+        pass
+
+if(A == 0): # Also available for if, while
+    pass
+elif(A==1):
+    do_sth()
+else:
+    pass
 
 ```
 
+## Exception handling
+Allows program to continue running in case of error 
+```python
+try:
+    do_sth() # potential error in do_sth
+except: # executed when error happens
+    fix_error() #
+else: # executed when error does not happen
+    do_sth_successful()
+finally: # executed at the very end (doesn't matter error or not)
+    do_sth_done()
+
+
+# Example
+try:
+    result = num1 / num2
+    print(result)
+except:
+    print("ERROR!") # when num2 is 0
+else:
+    print("Success")
+finally:
+    print("End of error handling")
+
+# Find cause of error
+try:
+    result = num1 / num2
+    print(result)
+except Exception as err: # this is used to get the ALL cause of error
+    print("ERROR!", err) # when num2 is 0, result is ERROR!division by zero
+
+#Improve from previous example
+try:
+    result = num1 / num2
+    print(result)
+except ZeroDivisionError:
+    print("Cannnot divide by 0")
+except TypeError:
+    print("Cannot divide integer by string")
+except Exception as err: # When all error cases (zero division, typeerror) above doesn't work, this is the one that is executed
+    print("ERROR!", err)
+
+
+# All error handling processes
+# 1. try except
+# 2. try finally
+# 3. try except else
+# 4. try except else finally 
+```
+
+## Module
+A single python file (.py)
+```python
+# Two ways to use module
+
+# 1. import module_name 
+# Brings in the whole module and use all functionality
+
+# 2. from module_name import variable/method/class 
+# Use specific functionalities
+
+#goodjob.py
+def say():
+    print("Good job!")
+
+#script.py
+import goodjob
+goodjob.say() # Good job!
+
+from goodjob import say # 
+say() # Good job!
+```
+
+## Package
+Collection of modules
+```python
+
+# my_coding/goodjob.py (in folder my_coding)
+def say():
+    print("Good job!")
+
+# my_coding/goodbye.py (in folder my_coding)
+def bye():
+    print("Good bye!")
+
+# practice.py 
+import my_coding.goodjob
+import my_coding.goodbye
+
+my_coding.goodjob.say()
+my_coding.goodbye.bye()
+
+# practice2.py
+from my_coding import goodjob
+from my_coding import goodbye
+goodjob.say()
+goodbye.bye()
+
+#practice3.py
+from my_coding import goodjob, goodbye
+goodjob.say()
+goodbye.bye()
+
+```
 
 
 
