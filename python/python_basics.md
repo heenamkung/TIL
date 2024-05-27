@@ -89,8 +89,24 @@ comments
 ```
 
 ## String
-### Slicing
+
+### CRUD
 ```python
+# Create (C)
+
+#Single Line string
+str1 = "Hello"
+str1 = str(12345) # "12345"
+
+#Multi Line string
+str1 = """multi line
+string. how cool is that. """
+print(str1.replace("\n", " ")) #remove newline from multi line string
+
+
+
+# Slicing (R)
+
 x = "python"
 x[-1] # 'n'    the LAST element
 x[-2] # 'o'
@@ -102,9 +118,29 @@ x[1:] # ython    1 to end
 x[:4] # pyth    
 x[:-1] # pytho    0 to end-1. CAUTION
 x[:] # python
+
+
+
+# Update (U)
+
+# Strings are immutable, so updating means creating a new string
+str2 = str1.upper()
+str2 = str1.lower()
+str2 = str1.strip()
+
+
+
+# Delete (D)
+
+#Cannot delete characters from a string, but can create new strings that omits unwanted characters
+
+my_string = "Hello World"
+new_string = my_string.replace("World", "") # "Hello "
+new_string = my_string[:4] + my_string[6:] # HelloWorld
+
 ```
 
-### Methods (★)
+### Methods
 Strings are immutable, so ALL methods return a new string
 ```python
 x = "PYthon"
@@ -136,11 +172,50 @@ f"This is \"{foo}\" and this is \"{bar}\"" # This is "FOO" and this is "BAR"    
 ## Data Structures
 ### List
 ```python
+# CRUD Summary
+
+# Create List (C)
+
 my_list = ["foo", "bar", 3.14, True, False] # Elements doesn't need to be type specific
-temp_list ["temp", "values"]
-new_string = "baz"
+my_list = list("baz") # ["b", "a", "z"]
 empty_list = []
 
+
+
+# Read (R)
+
+# Get item
+first_elem = my_list[0]
+last_elem = my_list[-1]
+# Slicing
+new_list = my_list[1:4]
+# Get Index Number
+my_list.index("foo") 
+# Get Boolean
+"foo" in my_list
+
+
+
+# Update (U)
+
+# 1. Add to end of list
+my_list.append("foo")
+# 2. Add to nth index of list
+my_list.insert("foo", n)
+
+
+
+# Remove item from list (D)
+
+# 1. remove by index
+my_list.pop(n) # nth element
+# 2. remove by item
+my_list.remove("foo")
+
+```
+
+
+```python
 # Similar to strings
 my_list[0,2] # ["foo", "bar"]    same as string slicing
 
@@ -164,10 +239,27 @@ new_list = [x+1 for x in my_list if x > 3] # 5 6
 new_list = [str(x)+"번째" for x in my_list if x>3]  # 4번째 5번째
 ```
 
+
+
 ### Tuple
 Similar to list but uses a round brackets. Also they are immutable, meaning they CANNOT be modified. Read-only version of list
+
 ```python
-_tuple = ("foo", "bar", 1) # round brackets for tuple
+# CRUD Summary
+
+# tuples are immutable meaning they don't have U (update) and D (delete)
+
+# Cannot add item to tuple. Only create it (C)
+my_tuple = (1,2,3)
+my_tuple = tuple([1,2,3])
+
+# Retrieve data (R)
+item = my_tuple[n] # nth index
+sub_tuple = my_tuple[1:3] # slicing
+index = my_tuple.index("foo")
+```
+
+```python
 
 # Packing and Unpacking
 _tuple = ("foo", "bar", 1, 2, "baz") # packing
@@ -188,6 +280,44 @@ _tuple = ("foo", "bar", 1, 2, "baz") # packing
 Unlike list or tuple, Set does NOT allow duplicate elements and does NOT preserve order
 
 Think of it as a set of foods that you want to eat. You can't have 2 lasagna elements and the order doesn't matter
+
+```python
+# CRUD Summary
+
+# Create set (C)
+my_set = {1, 2, 3, 4, 5}
+another_set = set([6, 7, 8, 9, 10]) # used to delete duplicates in list
+
+
+
+## Retrieve item from set (R)
+# 1. 
+for item in my_set:
+		print(item)
+# 2. 
+if "foo" in my_set():
+		print("Foo found")
+
+
+
+# Update (U)
+# Add items
+my_set.add(6) # {1,2,3,4,5,6}
+my_set.update([7, 8]) # {1,2,3,4,5,6,7,8}
+
+## Remove item
+my_set.remove("foo") # returns error when "foo" doesn't exist
+my_set.discard("foo") # does NOT return error when "foo" doesn't exist
+
+## remove and return an arbitrary element from set
+my_set.pop() 
+
+
+
+# Delete (D)
+del my_set
+
+```
 
 ```python
 foo = {"candy", "chocolate", "coffee"} # curly brackets for set
