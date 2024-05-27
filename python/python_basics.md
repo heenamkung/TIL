@@ -340,13 +340,18 @@ del foo # removes foo
 Composed of key and value. Duplicate keys are NOT allowed 
 
 Curly brackets like set but with : between key and value
+
 ```python
+# CRUD Summary
+
+# Create Dictionary (C)
 _dict = {key1:value1,key2:value2,key3:value3} # hard to read
 _dict = { # better readability
     key1:value1
     ,key2:value2
     ,key3:value3
 }
+_dict = dict(name="bob", age=30, city = "SF")
 
 # Key supports all types
 person = { 
@@ -357,21 +362,29 @@ person = {
     True: "string True"
 }
 
-# Get values
-person[True] # string True
-person[25] # string 25
+# Read (R)
+person[True] # "string True"
+person[25] # "string 25"
 person["age"] # 5
 person["nickname"] # error    key "nickname" doesn't exist
+
 person.get("nickname") # None    checks if key exists and returns either the value or None
 person.get("age") # 5    
 
-# CRUD
-person["nickname"] = "bar" # add data
-person[age] = 7 # update data
-person.update({"name":"newName", "age" : 9}) # update multiple data at once
-person.pop("age") # deletes "age" key
+# Update (U)
+# Add data
+person["nickname"] = "bar"
+person.update({"name":"newName", "age" : 9}) # add multiple data at once
 
-# Get keys
+# Delete (D)
+# Remove data
+del person.["name"] # deletes key-value pair
+value = person.pop("age") # deletes "age" key and returns value
+info = person.popitem() # deletes last inserted key-value pair
+```
+
+```python
+# Get keys from dictionary
 keys_view = person.keys() # dict_keys(['name', 'age', 'height', 25, True, 'nickname'])    returns an object. needs conversion to use this data
 keys_list = list(keys_view)
 for key in keys_list:
@@ -387,10 +400,12 @@ Key: nickname, Value: bar
 '''
 
 # Get every item
-person.items()
+items = person.items()
+items = list(items)
+print(items) # [('name', 'foo'), ('age', 5), ('height', 175), (25, 'string 25'), (True, 'string True')] list of tuples
 ''' 
-dict_items([('name', 'newName'), ('age', 9), ('height', 175), (25, 'text 25'), (True, 'string True'), ('nickname', 'bar')])    
-once again, it returns an object
+ person.items() returns dict_items([('name', 'newName'), ('age', 9), ('height', 175), (25, 'text 25'), (True, 'string True'), ('nickname', 'bar')])    
+It returns an object, so needs conversion. 
 '''
 ```
 
