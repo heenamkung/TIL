@@ -61,3 +61,16 @@ Inspired from [thoughtbot til](https://github.com/thoughtbot/til).
 
 
 </details>
+
+</details>
+
+<details open>
+<summary> 
+<b><font size="+2">web</font></b>
+</summary>
+
+* [API](https://github.com/heenamkung/TIL/blob/main/web/api.md)
+* [JSON and XML](https://github.com/heenamkung/TIL/blob/main/web/json_xml.md)
+
+
+</details>
