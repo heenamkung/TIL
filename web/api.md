@@ -25,6 +25,17 @@ Application Programming Interface (API)
 
 ## Types of API
 Public
-- 
+- Available to the public. 
+- To avoid too much traffic, there might be limits on the daily request count.
+
 Private
-- 
+- Not available to the public and used privately with a haskey. Hashkey(e.g. sha256) might be required in HTTP header to access server. 
+- Hashkey might be shared between business partners
+
+## API Versioning
+Open API urls most likely have version name inside the url 
+```
+https://api.blahblah.com/v1/forecase?blahblah
+```
+- This allows existing services that use v1 API to run smoothly even after a huge update in the API. 
+- Users can choose to upgrade to V2 or may continue use V1 

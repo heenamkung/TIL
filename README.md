@@ -35,7 +35,24 @@ Inspired from [thoughtbot til](https://github.com/thoughtbot/til).
 
 </details>
 
+<details network>
+<summary> 
+<b><font size="+2">network</font></b>
+</summary>
+
+* [Network](https://github.com/heenamkung/TIL/blob/main/network/network.md)
+
 </details>
+
+<details os>
+<summary> 
+<b><font size="+2">os</font></b>
+</summary>
+
+* [Cloud](https://github.com/heenamkung/TIL/blob/main/os/cloud.md)
+
+</details>
+
 <details open>
 <summary> 
 <b><font size="+2">python</font></b>
