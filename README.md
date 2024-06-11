@@ -30,8 +30,20 @@ Inspired from [thoughtbot til](https://github.com/thoughtbot/til).
 <details open>
 <summary> 
 <b><font size="+2">java</font></b>
+
+
+* [Java Basics](https://github.com/heenamkung/TIL/blob/main/java/java_basics.md)
 </summary>
 
+
+</details>
+
+<details open>
+<summary> 
+<b><font size="+2">others</font></b>
+</summary>
+
+* [Compiler Vs Interpretor](https://github.com/heenamkung/TIL/blob/main/others/compiler_vs_interpretor.md)
 
 </details>
 
@@ -57,8 +69,6 @@ Inspired from [thoughtbot til](https://github.com/thoughtbot/til).
 <summary> 
 <b><font size="+2">others</font></b>
 </summary>
-
-* [Object vs Instance](https://github.com/heenamkung/TIL/blob/main/others/object_vs_instance.md)
 
 </details>
 
