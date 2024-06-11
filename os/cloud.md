@@ -102,3 +102,11 @@ CI/CD pipline
     - Unit test: testing a simple function
     - Integration Test: Integrate all software modules(external library, DB) for testing. Might find bug with environment such as not working on multicore cpu. e.g. mocha.js
     - End to end (E2E) test: Before deployment, test the whole service in the point of view of the actual users. If button clicks work properly. 
+- Merge: Using git to merge codes from different developers. Need to minimize conflicts
+
+- Delivery / Deployment: 
+Includes many aspects, not just deployment of service to end users
+    - Deployment of admin pages for administrators
+    - Deployment of preprocessed data from data warehouse to backend engineer
+
+Tools: github action, genkins, circle ci, heroku(heroku automates ci/cd as it is a PAAS)
