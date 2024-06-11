@@ -35,7 +35,7 @@ Inspired from [thoughtbot til](https://github.com/thoughtbot/til).
 
 </details>
 
-<details network>
+<details open>
 <summary> 
 <b><font size="+2">network</font></b>
 </summary>
@@ -44,12 +44,21 @@ Inspired from [thoughtbot til](https://github.com/thoughtbot/til).
 
 </details>
 
-<details os>
+<details open>
 <summary> 
 <b><font size="+2">os</font></b>
 </summary>
 
 * [Cloud](https://github.com/heenamkung/TIL/blob/main/os/cloud.md)
+
+</details>
+
+<details open>
+<summary> 
+<b><font size="+2">others</font></b>
+</summary>
+
+* [Object vs Instance](https://github.com/heenamkung/TIL/blob/main/others/object_vs_instance.md)
 
 </details>
 
