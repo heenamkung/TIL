@@ -59,6 +59,54 @@ MyJavaProject/
 - lib/: Contains external libraries and dependencies.
 - test/: Contains test classes and resources.
 
+## Java project with gradle
+Project Structure:
+```
+todo-server/
+├── .gradle/
+├── .idea/
+├── build/
+├── gradle/
+├── src/
+│   ├── main/
+│   │   ├── java/
+│   │   │   └── org/
+│   │   │       └── example/
+│   │   │           └── TodoServerApplication.java
+│   │   └── resources/
+│   └── test/
+├── .gitignore
+├── build.gradle
+├── gradlew
+├── gradlew.bat
+├── settings.gradle
+```
+### Explanation of Each Part
+- .gradle/
+    - What it does: Stores temporary files that Gradle needs to run your builds. You don't need to worry about this folder.
+- .idea/
+    - What it does: Holds settings for the IntelliJ IDEA code editor. This is only important if you're using IntelliJ IDEA.
+- build/
+    - What it does: Contains files created when you build your project, like compiled code and JAR files. Gradle generates this folder.
+- gradle/
+    - What it does: Contains files needed to run Gradle builds without having to install Gradle yourself. These files help ensure everyone working on the project uses the same Gradle version.
+- src/
+    - What it does: Where you write your code and put other files your code needs.
+        - main/: Contains your main application code.
+            - java/: Holds your Java source files.
+            - resources/: Contains things like configuration files and images that your code uses.
+        - test/: Where you write your test code to check if your main code works correctly.
+- .gitignore
+    - What it does: Tells Git which files and folders to ignore, so you don't accidentally include things like temporary files or build outputs in your version control.
+- build.gradle
+    - What it does: The main file that Gradle uses to figure out how to build your project. It specifies things like which libraries your project depends on and any special build tasks.
+- gradlew
+    - What it does: A script you can run to build your project with Gradle, ensuring everyone uses the same Gradle version without needing to install it manually.
+- gradlew.bat
+    - What it does: Same as gradlew, but for Windows users.
+- settings.gradle
+    - What it does: Another Gradle configuration file that sets up basic settings for your project, like its name.
+
 ## Build Tools
 Java projects often use build tools like Maven or Gradle to manage dependencies, automate the build process, and handle tasks like compiling, testing, and packaging.
 

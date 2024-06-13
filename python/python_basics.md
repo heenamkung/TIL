@@ -1,19 +1,17 @@
 # Python Basics
 Here are some basics I learned about python, coming from a C# background.
 
-For most of the example code below, assume they are inside the print() function. 
-
 ## Print
 Note that print() ends with a newline. Running multiple print(x) will result in multiple lines of x.
 
 ## Spacing
-```
-Spaces are the preferred indentation method.
 
-Tabs should be used solely to remain consistent with code that is already indented with tabs.
+- Spaces are the preferred indentation method.
 
-Python disallows mixing tabs and spaces for indentation. PICK ONE.
-```
+- Tabs should be used solely to remain consistent with code that is already indented with tabs.
+
+- Python disallows mixing tabs and spaces for indentation. PICK ONE.
+
 
 ## Capitalized Booleans
 ```python
@@ -48,12 +46,39 @@ bool(None) # False
 ```python
 #Modulus
 10%3 # 1
+-10%3 # 2    DIFFERENT FROM C++, JAVA
 
-#Floor division
+import math
+math.fmod(-10,3) # -1.0   SIMILAR TO C++, JAVA
+
+#Division (always in decimal)
+5/2 # 2.5
+-3/2 # -1.5
+
+#Floor division (division in integer. ALWAYS ROUNDS DOWN)
 10//3 # 3
+-3//2 # -2    -1.5 ROUNDS DOWN to -2
+int(-3/2) # gets remove of decimal without rounding down
 
 #Exponentiation
 10**2 # 25
+```
+
+### Useful math helpers
+```python
+import math
+math.floor(3/2) # 1    always round down 
+math.ceil(3/2) # 2    always round up
+math.sqrt(2) # 1.4...
+math.pow(2,3) # 8
+
+# Max, Min Int
+float("inf")
+float("-inf")
+
+#Python numbers are infinite so they never overflow
+math.pow(2,200) # 1.6e+60, which is still smaller than float("int")
+
 ```
 
 ## Logical Operators
@@ -80,13 +105,14 @@ not 3<5 # False
 ## Comments
 ``` python
 #Single Line
-
 '''
 Multi 
 line 
 comments
 '''
 ```
+
+
 
 ## String
 
@@ -103,10 +129,7 @@ str1 = """multi line
 string. how cool is that. """
 print(str1.replace("\n", " ")) #remove newline from multi line string
 
-
-
 # Slicing (R)
-
 x = "python"
 x[-1] # 'n'    the LAST element
 x[-2] # 'o'
@@ -119,8 +142,6 @@ x[:4] # pyth
 x[:-1] # pytho    0 to end-1. CAUTION
 x[:] # python
 
-
-
 # Update (U)
 
 # Strings are immutable, so updating means creating a new string
@@ -128,12 +149,9 @@ str2 = str1.upper()
 str2 = str1.lower()
 str2 = str1.strip()
 
-
-
 # Delete (D)
 
 #Cannot delete characters from a string, but can create new strings that omits unwanted characters
-
 my_string = "Hello World"
 new_string = my_string.replace("World", "") # "Hello "
 new_string = my_string[:4] + my_string[6:] # HelloWorld
@@ -170,7 +188,9 @@ f"This is \"{foo}\" and this is \"{bar}\"" # This is "FOO" and this is "BAR"    
 ```
 
 ## Data Structures
-### List
+### List (Array)
+- Lists are dynamic arrays in default. Indicates that they can be used as stacks. append() to push to end, pop() to pop from end. 
+- Since they are dynamic arrays and not stack, it is possible to insert in middle of the array by insert(index,value) which is O(N)
 ```python
 # CRUD Summary
 
@@ -180,21 +200,19 @@ my_list = ["foo", "bar", 3.14, True, False] # Elements doesn't need to be type s
 my_list = list("baz") # ["b", "a", "z"]
 empty_list = []
 
-
-
 # Read (R)
 
 # Get item
 first_elem = my_list[0]
 last_elem = my_list[-1]
 # Slicing
-new_list = my_list[1:4]
+new_list = my_list[1:4] # gets 1,2,3 elements (exclude 4)
 # Get Index Number
 my_list.index("foo") 
 # Get Boolean
 "foo" in my_list
-
-
+# Unpacking
+a, b, c = [2,3,4] # number of variables must match with list length
 
 # Update (U)
 
@@ -202,8 +220,6 @@ my_list.index("foo")
 my_list.append("foo")
 # 2. Add to nth index of list
 my_list.insert("foo", n)
-
-
 
 # Remove item from list (D)
 
@@ -214,39 +230,72 @@ my_list.remove("foo")
 
 ```
 
-
 ```python
+# iterating with index
+for i in range(len(my_list)):
+    print(my_list[i])
+# iterating without index
+for n in my_list:
+    print(n)
+
+# Reverse
+my_list.reverse()
+
+# Sort
+my_list.sort() # ascending order
+my_list.sort(reverse=True) # descending order
+
+# Sorting list of strings
+string_list = ["bob", "alice", "jane", "doe"]
+string_list.sort() # alice bob doe jane
+
+# Sorting list of strings by length of string
+# Key is equal to lambda (a function without a name).
+# Take every single value of list, call it x, and then return the length of x, which is the key that is used for sorting
+string_list.sort(key=lambda x : len(x))
+#Same without lambda
+def get_length(i):
+    return len(i)
+string_list.sort(key=get_length)
+
 # Similar to strings
 my_list[0,2] # ["foo", "bar"]    same as string slicing
-
 "foo" in my_list # True    checks if element is inside, returns boolean
 
-len(my_list) # 5
-
-# Editing list
-my_list[1] = "foo" # ["foo", "foo", 3.14, True, False]
-my_list.append(new_string)  # ["foo", "bar", 3.14, True, False, "baz"]
-my_list.remove("foo") # ["bar", 3.14, True, False]
-my_list.extend(temp_list) # ["foo", "foo", 3.14, True, False, "temp", "values"]
-
-# Many other methods (insert, pop, clear, sort, index...)
-
 #List comprehension
+arr = [i for i in range(5)] # 0 1 2 3 4
+arr = [i + i for i in range(5)] # 0 2 4 6 8
 my_list = [1,2,3,4,5]
 new_list = [x for x in my_list if x > 3] # 4 5
 new_list = [x**2 for x in my_list if x > 3] # 16 25
 new_list = [x+1 for x in my_list if x > 3] # 5 6
 new_list = [str(x)+"번째" for x in my_list if x>3]  # 4번째 5번째
+
+# 2d arrays
+arr = [[0] * 4 for i in range(4)] # [[0,0,0,0], [0,0,0,0],[0,0,0,0], [0,0,0,0]]    [0]*4 returns [0,0,0,0]
+
+# NEVER DO THIS for 2d arrays
+arr = [[0]*4]*4 # Output is same, but editing one row will alter the other rows. the rows are NOT unique
 ```
 
 
 
 ### Tuple
-Similar to list but uses a round brackets. Also they are immutable, meaning they CANNOT be modified. Read-only version of list
+- Similar to list but uses a round brackets. Also they are immutable, meaning they CANNOT be modified. Read-only version of list
+
+- Mostly used as keys for hash map/set. This is because lists are NOT HASHABLE and CANNOT be keys for hash map/set.
+```python
+myMap = {(1,2):3}
+print(myMap[(1,2)])
+
+mySet = set()
+mySet.add((1,2))
+print((1,2) in mySet)
+```
+
 
 ```python
 # CRUD Summary
-
 # tuples are immutable meaning they don't have U (update) and D (delete)
 
 # Cannot add item to tuple. Only create it (C)
@@ -260,7 +309,6 @@ index = my_tuple.index("foo")
 ```
 
 ```python
-
 # Packing and Unpacking
 _tuple = ("foo", "bar", 1, 2, "baz") # packing
 (var1, var2, var3, var4, var5) = _tuple # unpacking    values are inserted into var1~5 variables
@@ -276,19 +324,21 @@ _tuple = ("foo", "bar", 1, 2, "baz") # packing
 
 ```
 
-### Set
-Unlike list or tuple, Set does NOT allow duplicate elements and does NOT preserve order
+### Set (Hash Sets)
+- A hash table without values, called Hash Sets
+- Unlike list or tuple, Set does NOT allow duplicate elements and does NOT preserve order
 
-Think of it as a set of foods that you want to eat. You can't have 2 lasagna elements and the order doesn't matter
 
 ```python
 # CRUD Summary
 
 # Create set (C)
-my_set = {1, 2, 3, 4, 5}
-another_set = set([6, 7, 8, 9, 10]) # used to delete duplicates in list
-
-
+my_set = set() # initialize a set
+my_set = set([6, 7, 8, 9, 10]) # Initialize set with list
+my_set = set([6, 7, 8, 9, 9, 10]) # used to delete duplicates in list
+my_set = {} # THIS WILL CREATE A DICTIONARY. CAREFUL.
+my_set = {1, 2, 3, 4, 5} # not recommended. Save {} for dictionaries.
+my_set {i for i in range(5)} # set comprehension
 
 ## Retrieve item from set (R)
 # 1. 
@@ -298,25 +348,19 @@ for item in my_set:
 if "foo" in my_set():
 		print("Foo found")
 
-
-
 # Update (U)
+
 # Add items
 my_set.add(6) # {1,2,3,4,5,6}
 my_set.update([7, 8]) # {1,2,3,4,5,6,7,8}
-
 ## Remove item
 my_set.remove("foo") # returns error when "foo" doesn't exist
 my_set.discard("foo") # does NOT return error when "foo" doesn't exist
-
 ## remove and return an arbitrary element from set
 my_set.pop() 
 
-
-
 # Delete (D)
 del my_set
-
 ```
 
 ```python
@@ -324,11 +368,8 @@ foo = {"candy", "chocolate", "coffee"} # curly brackets for set
 bar = {"coffee", "cake", "icecream"}
 
 foo.intersection(bar) # {"coffee"}    foo ∩ bar
-
 foo.union(bar) # {"candy", "chocolate", "coffee" , "cake", "icecream"}     foo ∪ bar
-
 foo.difference(bar) # {"candy", "chocolate"}    foo - bar
-
 
 # Can't access element by index because it is not sorted
 foo.add() # add element to set
@@ -336,22 +377,31 @@ foo.clear() # empties set
 del foo # removes foo 
 ```
 
-### Dictionary
-Composed of key and value. Duplicate keys are NOT allowed 
-
-Curly brackets like set but with : between key and value
+### Dictionary (Hash Map)
+- Hash Table
+- Composed of key and value. Duplicate keys are NOT allowed 
+- Curly brackets like set but with : between key and value
 
 ```python
 # CRUD Summary
 
 # Create Dictionary (C)
+myMap = {}
+myMap["alice"] = 88
+myMap["bob"] = 77
+print(myMap) # {'alice' : 88, 'bob' : 77}
+print(len(myMap)) # 2 (number of keys)
+
+# Dict comprehension - most useful
+myMap = {i:2*i for i in range(3)} # {0:0, 1:2, 2:4}
+
 _dict = {key1:value1,key2:value2,key3:value3} # hard to read
 _dict = { # better readability
     key1:value1
     ,key2:value2
     ,key3:value3
 }
-_dict = dict(name="bob", age=30, city = "SF")
+_dict = dict(name="bob", age=30, city = "SF") # {}"name": "bob", "age":30, "city":"SF}
 
 # Key supports all types
 person = { 
@@ -367,9 +417,16 @@ person[True] # "string True"
 person[25] # "string 25"
 person["age"] # 5
 person["nickname"] # error    key "nickname" doesn't exist
-
 person.get("nickname") # None    checks if key exists and returns either the value or None
 person.get("age") # 5    
+# Looping through hash maps
+myMap = {'alice':90, 'bob': 70}
+for key in myMap: # loop by key
+    print(key, myMap[key])
+for val in myMap.values(): # loop by value
+    print(val)
+for key, val in myMap.items(): # loop by unpacking
+    print(key, val)
 
 # Update (U)
 # Add data
@@ -407,6 +464,59 @@ print(items) # [('name', 'foo'), ('age', 5), ('height', 175), (25, 'string 25'),
  person.items() returns dict_items([('name', 'newName'), ('age', 9), ('height', 175), (25, 'text 25'), (True, 'string True'), ('nickname', 'bar')])    
 It returns an object, so needs conversion. 
 '''
+```
+
+### Queues (double ended queue = deque)
+Can insert/delete elements at both the starting point and end point. Makes it possible for both queue and stack.
+```python
+from collections import deque
+queue = deque()
+queue.append(1)
+queue.append(2)
+print(queue) # deque([1,2])
+
+queue.popleft() # deque([2])    O(1) unlike a stack in array
+queue.appendleft(1) # deque([1,2])    
+queue.pop() # dequeue([1])    # pop right
+```
+
+### Heaps (find min and max)
+```python
+import heapq
+
+# under the hood are lists
+# by default, always minHeap
+minHeap = []
+heapq.heappush(minHeap,3)
+heapq.heappush(minHeap,2)
+heapq.heappush(minHeap,4)
+
+# Min is always at index 0
+print(minHeap[0]) # 2
+
+while len(minHeap):
+    print(heapq.heappop(minHeap)) # 2 3 4
+
+# No max heaps by default, work around is
+# to use min heap and multiply by -1 when
+# push & pop
+maxHeap = []
+heapq.heappush(maxHeap, -3)
+heapq.heappush(maxHeap, -2)
+heapq.heappush(maxHeap, -4)
+
+# Max is always at index 0
+print(-1 * maxHeap(0)) # 4
+
+while len(maxHeap):
+    print(-1 * heapq.heappop(maxHeap)) # 4 3 2 
+
+# Build heap from initial values
+arr = [2,1,8,4,5]
+heapq.heapify(arr) # O(N)
+while arr:
+    print(heapq.heappop(arr)) # 1 2 4 5 8
+
 ```
 
 ### Summarize
@@ -471,6 +581,7 @@ for x in range(5):
 
 range(2,6) # 2 3 4 5
 range(0,10,2) # 0 2 4 6 8    step = 2
+range(5,1,-1) # 5, 4, 3, 2    decrementing. must add third step
 
 my_list = [1,2,3]
 for x in my_list:
@@ -482,11 +593,13 @@ for x in my_tuple:
 
 my_dict = {'name':'foo', 'age':25, 'height': 170}
 for x in my_dict.keys():
-    print(x)
+    print(x) # name, age, height
 for y in my_dict.values():
-    print(y)
+    print(y) # foo, 25, 170
 for u, v in my_dict.items():
-    print(u, v)
+    print(u, v) # name foo, age 25, height 170
+for z in my_dict.items():
+    print(z) # ('name', 'foo'), ('age', 25), ('height', 170)
 
 my_string = "apple"
 for x in my_string:
@@ -512,6 +625,8 @@ for x in range(10):
 ```
 
 ### function
+#### Basic Function Syntax
+
 ```python
 #1.
 def print_price(x):
@@ -550,6 +665,40 @@ def print_multiple_customer_names(*names): # can only include one * for paramete
 print_multiple_customer_names("hey", "i", "just", "met", 5, True, "we") # hey i just met 5 True we
 ```
 
+#### Nested Functions
+```python
+# Nested functions have access to outer variables
+def outer(a,b):
+    c = "c"
+
+    def inner():
+        return a+b+c
+    return inner()
+
+print(outer("a", "b")) # abc
+
+# Can modify objects but not reassign unless using nonlocal keyword
+def double(arr, val):
+    def helper():
+        # Modifying array works
+        for i, n in enumerate(arr): # i = index, n = value
+            arr[i] *= 2
+
+        # will only modify val in the helper scope
+        # val *= 2
+
+        #this will modify val outside helper scoper
+        nonlocal val
+        val *= 2
+    helper()
+    print(arr,val) # [2,4] 6
+
+num = [1,2]
+val = 3
+double(nums, val)
+
+```
+
 ### global variable (★)
 ```python
 message = "i'm global"
@@ -565,61 +714,6 @@ def do_sth_to_global():
 
 ```
 
-### IO
-```python
-# inp is always a string. in order to add conditions , need type conversion
-inp = input("How many do you need") # takes line input, inp is string
-inp = int(input("How many do you need")) # inp is int
-```
-### File IO: open, close
-open(file_name, mode, encoding="encoding_mode")
-
-Frequently used mode:
-- r : read
-- a : append 
-- w : write - overwrites existing file or creates new file
-
-```python
-# write
-f = open('list.txt', 'w', encoding='utf8') # utf8 for korean support
-f.write('Name1ㅋㅋ\n')
-f.write('Name2ㅋㅋ\n')
-f.close()
-
-# read whole content
-f = open('list.txt', 'r', encoding='utf8')
-contents = f.read()
-print(contents)
-f.close()
-'''output:
-Name1ㅋㅋ
-Name2ㅋㅋ
-'''
-
-# read line by line
-f = open('list.txt', 'r', encoding='utf8')
-for line is f:
-    print(line, end="") ## end is to prevent two newlines. print adds \n and Name1ㅋㅋ\n already has a newline.
-f.close()
-```
-
-### File IO: with
-Ensure resources are properly managed and released (such as closing a file). Best practice to use it when handling file io.
-```python
-#write example
-f = open('list.txt', 'w', encoding='utf8') # before with
-with open('list.txt', 'w', encoding='utf8') as f: # after with
-    f.write('Name1ㅋㅋ\n')
-    f.write('Name2ㅋㅋ\n')
-# no need for close() just leave the scope and it's already closed
-
-
-#read example
-with open('list.txt', 'r', encoding='utf8') as f:
-    contents = f.read()
-    print(contents)
-
-```
 ## Class
 ### Basic syntax
 ```python
@@ -656,6 +750,7 @@ k2 = Keyboard("mr.suit", 600)
 ```
 ### Method
 ```python
+# self key word is required as param
 class Keyboard:
     def __init__(self, name, price): # name and price are member variable
         self.name = name
@@ -744,6 +839,64 @@ else:
     pass
 
 ```
+
+
+### IO
+```python
+# inp is always a string. in order to add conditions , need type conversion
+inp = input("How many do you need") # takes line input, inp is string
+inp = int(input("How many do you need")) # inp is int
+```
+### File IO: open, close
+open(file_name, mode, encoding="encoding_mode")
+
+Frequently used mode:
+- r : read
+- a : append 
+- w : write - overwrites existing file or creates new file
+
+```python
+# write
+f = open('list.txt', 'w', encoding='utf8') # utf8 for korean support
+f.write('Name1ㅋㅋ\n')
+f.write('Name2ㅋㅋ\n')
+f.close()
+
+# read whole content
+f = open('list.txt', 'r', encoding='utf8')
+contents = f.read()
+print(contents)
+f.close()
+'''output:
+Name1ㅋㅋ
+Name2ㅋㅋ
+'''
+
+# read line by line
+f = open('list.txt', 'r', encoding='utf8')
+for line is f:
+    print(line, end="") ## end is to prevent two newlines. print adds \n and Name1ㅋㅋ\n already has a newline.
+f.close()
+```
+
+### File IO: with
+Ensure resources are properly managed and released (such as closing a file). Best practice to use it when handling file io.
+```python
+#write example
+f = open('list.txt', 'w', encoding='utf8') # before with
+with open('list.txt', 'w', encoding='utf8') as f: # after with
+    f.write('Name1ㅋㅋ\n')
+    f.write('Name2ㅋㅋ\n')
+# no need for close() just leave the scope and it's already closed
+
+
+#read example
+with open('list.txt', 'r', encoding='utf8') as f:
+    contents = f.read()
+    print(contents)
+
+```
+
 
 ## Exception handling
 Allows program to continue running in case of error 
@@ -857,3 +1010,5 @@ goodbye.bye()
 
 ## Sources
 https://youtu.be/T6z-0dpXPvU?si=ucaSKc1oyySv5S2b
+
+https://www.youtube.com/watch?v=0K_eZGS5NsU&ab_channel=NeetCode
