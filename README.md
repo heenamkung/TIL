@@ -1,5 +1,5 @@
 # Today I Learned
-A TIL project to keep a record of everything I studied.
+A TIL project to keep a record of my studies.
 
 Inspired from [thoughtbot til](https://github.com/thoughtbot/til).
 
@@ -33,7 +33,7 @@ Inspired from [thoughtbot til](https://github.com/thoughtbot/til).
 <summary> 
 <b><font size="+2">Design Pattern</font></b>
 </summary>
-
+* [Design Patterns](https://github.com/heenamkung/TIL/blob/main/design_pattern/design_pattern.md)
 </details>
 
 <details open>
@@ -49,10 +49,9 @@ Inspired from [thoughtbot til](https://github.com/thoughtbot/til).
 <details open>
 <summary> 
 <b><font size="+2">Java</font></b>
-
+</summary>
 
 * [Java Basics](https://github.com/heenamkung/TIL/blob/main/java/java_basics.md)
-</summary>
 
 
 </details>
@@ -83,7 +82,6 @@ Inspired from [thoughtbot til](https://github.com/thoughtbot/til).
 </summary>
 
 * [Compiler Vs Interpretor](https://github.com/heenamkung/TIL/blob/main/others/compiler_vs_interpretor.md)
-
 * [Library vs Framework](https://github.com/heenamkung/TIL/blob/main/others/library_vs_framework.md)
 
 </details>
