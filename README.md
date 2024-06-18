@@ -20,6 +20,13 @@ Inspired from [thoughtbot til](https://github.com/thoughtbot/til).
 </details>
 <details open>
 <summary> 
+<b><font size="+2">design pattern</font></b>
+</summary>
+
+</details>
+
+<details open>
+<summary> 
 <b><font size="+2">git</font></b>
 </summary>
 
