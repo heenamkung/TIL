@@ -136,3 +136,31 @@ sum(range(2,8,2)) #2+4+6 = 12 # way to add even numbers
 from math import gcd
 _gcd = gcd(122, 305) # _gcd = 61
 ```
+
+## Type declaration (Python 3.6)
+```python
+variable_name : type
+number: int
+```
+
+```python
+def func(variable_name: type) -> type:
+    return
+
+```
+
+## Optional Parameter
+- When a type can also be None, use optional[type]
+- Does NOT mean parameter is optional. Check foo2() below.
+```python
+from typing import Optional
+
+def foo(bar: int) -> int:
+    return bar+5
+
+def foo2(bar: Optional[int]) -> Optional[int]:
+    return bar
+
+foo2() # ERROR: missing parameter. In order for this to work, foo2(bar: Optional[int] = None)
+foo2(4)
+```

@@ -5,7 +5,18 @@ Inspired from [thoughtbot til](https://github.com/thoughtbot/til).
 
 <details open>
 <summary> 
-<b><font size="+2">c++</font></b>
+<b><font size="+2">Algorithm</font></b>
+</summary>
+
+* [LeetCode 206: Reverse Linked List](https://github.com/heenamkung/TIL/blob/main/algorithm/lc206_reverse_linked_list.py)
+* [LeetCode 96: Reverse Linked List II](https://github.com/heenamkung/TIL/blob/main/algorithm/lc92_reverse_linked_list_ii.py)
+
+
+</details>
+
+<details open>
+<summary> 
+<b><font size="+2">C++</font></b>
 </summary>
 
 
@@ -14,20 +25,20 @@ Inspired from [thoughtbot til](https://github.com/thoughtbot/til).
 
 <details open>
 <summary> 
-<b><font size="+2">c#</font></b>
+<b><font size="+2">C#</font></b>
 </summary>
 
 </details>
 <details open>
 <summary> 
-<b><font size="+2">design pattern</font></b>
+<b><font size="+2">Design Pattern</font></b>
 </summary>
 
 </details>
 
 <details open>
 <summary> 
-<b><font size="+2">git</font></b>
+<b><font size="+2">Git</font></b>
 </summary>
 
 * [Commit message conventions](https://github.com/heenamkung/TIL/blob/main/git/commit-message-conventions.md)
@@ -37,7 +48,7 @@ Inspired from [thoughtbot til](https://github.com/thoughtbot/til).
 
 <details open>
 <summary> 
-<b><font size="+2">java</font></b>
+<b><font size="+2">Java</font></b>
 
 
 * [Java Basics](https://github.com/heenamkung/TIL/blob/main/java/java_basics.md)
@@ -50,7 +61,7 @@ Inspired from [thoughtbot til](https://github.com/thoughtbot/til).
 
 <details open>
 <summary> 
-<b><font size="+2">network</font></b>
+<b><font size="+2">Network</font></b>
 </summary>
 
 * [Network](https://github.com/heenamkung/TIL/blob/main/network/network.md)
@@ -59,7 +70,7 @@ Inspired from [thoughtbot til](https://github.com/thoughtbot/til).
 
 <details open>
 <summary> 
-<b><font size="+2">os</font></b>
+<b><font size="+2">OS</font></b>
 </summary>
 
 * [Cloud](https://github.com/heenamkung/TIL/blob/main/os/cloud.md)
@@ -68,7 +79,7 @@ Inspired from [thoughtbot til](https://github.com/thoughtbot/til).
 
 <details open>
 <summary> 
-<b><font size="+2">others</font></b>
+<b><font size="+2">Others</font></b>
 </summary>
 
 * [Compiler Vs Interpretor](https://github.com/heenamkung/TIL/blob/main/others/compiler_vs_interpretor.md)
@@ -79,7 +90,7 @@ Inspired from [thoughtbot til](https://github.com/thoughtbot/til).
 
 <details open>
 <summary> 
-<b><font size="+2">python</font></b>
+<b><font size="+2">Python</font></b>
 </summary>
 
 * [Python Basics](https://github.com/heenamkung/TIL/blob/main/python/python_basics.md)
@@ -89,7 +100,7 @@ Inspired from [thoughtbot til](https://github.com/thoughtbot/til).
 
 <details open>
 <summary> 
-<b><font size="+2">spring</font></b>
+<b><font size="+2">Spring</font></b>
 </summary>
 
 
@@ -97,7 +108,7 @@ Inspired from [thoughtbot til](https://github.com/thoughtbot/til).
 
 <details open>
 <summary> 
-<b><font size="+2">unity</font></b>
+<b><font size="+2">Unity</font></b>
 </summary>
 
 
@@ -107,7 +118,7 @@ Inspired from [thoughtbot til](https://github.com/thoughtbot/til).
 
 <details open>
 <summary> 
-<b><font size="+2">web</font></b>
+<b><font size="+2">Web</font></b>
 </summary>
 
 * [API](https://github.com/heenamkung/TIL/blob/main/web/api.md)
