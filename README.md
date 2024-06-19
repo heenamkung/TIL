@@ -33,7 +33,10 @@ Inspired from [thoughtbot til](https://github.com/thoughtbot/til).
 <summary> 
 <b><font size="+2">Design Pattern</font></b>
 </summary>
-* [Design Patterns](https://github.com/heenamkung/TIL/blob/main/design_pattern/design_pattern.md)
+
+* [Design Patterns - Behavioral](https://github.com/heenamkung/TIL/blob/main/design_pattern/design_pattern_behavioral.md)
+* [Design Patterns - Creational](https://github.com/heenamkung/TIL/blob/main/design_pattern/design_pattern_behavioral.md)
+* [Design Patterns - Structural](https://github.com/heenamkung/TIL/blob/main/design_pattern/design_pattern_behavioral.md)
 </details>
 
 <details open>
