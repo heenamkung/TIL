@@ -6,6 +6,7 @@
 - Behavioral (행동패턴)
 
 ## Structural
-Object/class composition or how objects can be combined to form larger structures.
+Deal with object composition or the way to assemble objects and classes into larger structures while keeping these structures flexible and efficient.
 
 Example: Proxy, Adapter
+
