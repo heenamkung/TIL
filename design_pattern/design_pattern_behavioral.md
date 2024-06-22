@@ -86,3 +86,38 @@ public class HelloWorld{
 }
 
 ```
+
+## Observer Pattern
+Allows an object to notify other objects when something changes.
+
+Example: Twitter, MVC Pattern
+
+```java
+
+interface Subject{
+    public void register(Observer obj);
+    public void unregister(Observer obj);
+    public void notifyObservers();
+    public Object getUpdate(Observer obj);    
+}
+
+interface Object{
+    public void update();
+}
+
+
+public class HelloWorld{
+    public static void main(String[] args){
+        Topic topic = new Topic();
+        Observer a = new TopicSubscriber("a", topic);
+        Observer b = new TopicSubscriber("b", topic);
+        Observer c = new TopicSubscriber("c", topic);
+        topic.register(a);
+        topic.register(b);
+        topic.register(c);
+        
+        topic.postMessage("Blah Blah!");
+    }
+}
+
+```
