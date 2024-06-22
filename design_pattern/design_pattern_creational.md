@@ -1,12 +1,13 @@
 # Design Pattern - Creational Pattern
 
 ## Types of Design Patterns
-- Creational (생성패턴)
+- *Creational (생성패턴)
 - Structural (구조패턴)
 - Behavioral (행동패턴)
 
 ## Creational
-All about how objects are created.
+- All about how objects are created.
+- Aim to make the system independent of how its objects are created, composed, and represented.
 
 Example: Singleton, Factory
 
@@ -327,12 +328,4 @@ Cons of DI:
 - Ultimately adding more code to the project (interface), increasing the complexity
 - DI happens in runtime not compile time, so may be harder to find bugs
 
-## Structural
-Object/class composition or how objects can be combined to form larger structures.
 
-Example: Proxy, Adapter
-
-## Behavioral
-How objects/classes interact and communicate with each other.
-
-Example: Observer, Iterator, Strategy

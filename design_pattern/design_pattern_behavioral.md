@@ -1,0 +1,88 @@
+# Design Pattern - Behavior Pattern
+
+## Types of Design Patterns
+- Creational (생성패턴)
+- Structural (구조패턴)
+- Behavioral (행동패턴)
+
+## Behavioral
+- These patterns are concerned with algorithms and the assignment of responsibilities between objects. 
+- They focus on how objects communicate with each other.
+
+Example: Observer, Iterator, Strategy
+
+## Strategy Pattern
+Defines a family of algorithms, encapsulates each one, and makes them interchangeable
+
+Example: Passport.js
+- Use ```passport.authenticate('google');``` to easily authenticate user for various platforms.
+- Supports 'google', 'facebook', 'twitter', etc.
+- Users can authenticate via various strategies (login methods).
+- Creating account with username / password is called local strategy.
+
+```java
+interface PaymentStrategy{
+    public void Pay(int amount);    
+}
+
+class KAKAOCardStrateg implements PaymentStrategy{
+    private String name;
+    private String cardNumber;
+    private String cvv;
+    private String dateOfExpiry;
+
+    public KAKAOCardStrategy(String name, String cardNumber, String cvv, String dateOfExpiry){
+        this.name = name;
+        this.cardNumber = cardNumber;
+        this.cvv = cvv;
+        this.dateOfExpiry = dateOfExpiry
+    }
+
+    @Override
+    public void Pay(int amount){
+        System.out.println(amount + " paid by KAKAKO card");
+    }
+}
+
+class GOOGLECardStrategy implements PaymentStrategy{
+    private String emailID;
+    private String password;
+
+    public GoogleCardStrategy(emailID, password){
+        self.emailID = emailID;
+        self.password = password;
+    }
+
+    @Override
+    public void Pay(int amount){
+        System.out.println(amount + " paid by GOOGLE card");
+    }
+}
+
+public class ShoppingCart{
+    ...
+    public void pay(PaymentStrategy paymentStrategy){
+        int amount = calculateTotal();
+        paymentStrategy.pay(amount);
+    }
+    ...
+}
+
+public class HelloWorld{
+    public static void main(String[] args){
+        ShoppingCart cart = new ShoppingCart();
+
+        Item A = new Item("itemA", 100);
+        Item B = new Item("itemB", 300);
+
+        cart.addItem(A);
+        cart.addItem(B);
+
+        //pay with google card
+        cart.pay(new GOOGLECardStrategy("abc@abc.com", "12341234"));
+        //part with kakao card
+        cart.pay(new KAKAOCardStrategy("Kim Jason", "87655678", "412", "12/05"));
+    }
+}
+
+```
