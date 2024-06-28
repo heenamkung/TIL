@@ -25,7 +25,7 @@ interface PaymentStrategy{
     public void Pay(int amount);    
 }
 
-class KAKAOCardStrateg implements PaymentStrategy{
+class KAKAOCardStrategy implements PaymentStrategy{
     private String name;
     private String cardNumber;
     private String cvv;
