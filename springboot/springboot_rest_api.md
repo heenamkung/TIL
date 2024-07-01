@@ -123,3 +123,10 @@ public class BookQueryParam {
 }
 ```
 
+
+# Others
+## Object Mapper
+- Deserialize JSON to Java DTO
+- Serialize Java DTO to JSON
+- Example: Jackson Library (spring boot), GSON
+
