@@ -124,9 +124,111 @@ public class BookQueryParam {
 ```
 
 
-# Others
-## Object Mapper
+# Object Mapper
 - Deserialize JSON to Java DTO
 - Serialize Java DTO to JSON
 - Example: Jackson Library (spring boot), GSON
 
+In case of empty fields during serialization/deserialization, check getter/setter name.
+```java
+// UserRequest.java
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+//When receving data, snake case data (user_name) are mapped to camel case (userName).
+@JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
+public class UserRequest {
+
+    private String userName;
+
+    private Integer userAge;
+
+    private String email;
+
+    /*
+    Don't use primitive type boolean. 
+    #1. if null, isKorean is set to default value false.
+    #2. lombok will change setter to setKorean not setIsKorean when using primitive boolean and "is" keyword. This results in isKorean always being false.
+
+    e.g)
+    @Getter
+    private boolean isGood; // isGood();
+    private boolean good; // isGood();
+    private Boolean isGood; // getIsGood();
+    
+    */
+    private Boolean isKorean;
+}
+```
+
+```java
+// RestApiApplicationTests.java 
+class RestApiApplicationTests {
+
+	@Autowired // Spring automatically creates an instance of this class and manages it.
+	private ObjectMapper objectMapper;
+
+	@Test
+	void contextLoads() throws JsonProcessingException {
+		var user = new UserRequest();
+		user.setUserName("Hee");
+		user.setUserAge(10);
+		user.setEmail("abc@gmail.com");
+		user.setIsKorean(true);
+
+		
+		var json = objectMapper.writeValueAsString(user);
+		System.out.println(json);
+
+		
+
+		
+		var dto = objectMapper.readValue(json, UserRequest.class);
+		System.out.println(dto);
+	}
+
+}
+```
+
+When receiving or sending JSON with custom syntax (such as all uppercase EMAIL), we can set @JsonProperty("EMAIL") on "private String email;" to send or receive json ```{ "EMAIL" : "abc@gmail.com" }```
+```java
+@JsonProperty("EMAIL")
+private String email;
+```
+
+Object mapper can create instance of UserRequest even if the constructor is private.
+
+
+## Serialization
+
+Object mapper only serializes value from method names starting with 'get'. ``` public String getUserName(){return "hee"} ```
+
+
+Lombok created getters and setters (@Data annotation) so there's no problem when using lombok. 
+
+However, when we define getters, if there is no ```getUserName()```, ```userName``` will not be serialized to json (json will not contain ```"user_name" : "hee"```). ```"user_name"``` key derives from method name and ```"hee"``` value derives from ```return userName``` in getter.
+
+If there is another method named ```getName()``` that returns ```userName```, then json will have two fields that return userName ```"user_name" : "hee"``` and ```"name" : "hee"```.
+
+To prevent this, use annotation @JsonIgnore to prevent ```getName()``` from getting serialized.
+
+## Deserialization
+
+When reading json (deserialize), dto must contain EITHER setter or getter to work properly.
+
+Without getter or setter (named correctly: "getUserName", "setEmail"), dto will be an UserRequest object with all members set to null.
+
+``` UserRequest {userName: 'null;, userAge: null, email='null', isKorean=null}```
+
+Json suddenly with a ```"user_names":"Hee"``` (user_names not user_name) will cause userName to be null. Fix this by adding @JsonProperty("user_names") to ```private String username```. Or we can create ```SetUserNames(String name){ this.userName = name; }``` to map it correctly
+
+```java
+@JsonProperty("user_names") // Overrides JsonNaming
+private String username;
+```
+
+```java
+private void SetUserNames(String name){
+    this.userNAme = name;
+}
+```
