@@ -36,6 +36,8 @@ Inspired from [thoughtbot til](https://github.com/thoughtbot/til).
 
 * [Design Patterns - Behavioral](https://github.com/heenamkung/TIL/blob/main/design_pattern/design_pattern_behavioral.md)
 * [Design Patterns - Creational](https://github.com/heenamkung/TIL/blob/main/design_pattern/design_pattern_creational.md)
+* [Design Patterns - Flux](https://github.com/heenamkung/TIL/blob/main/design_pattern/design_pattern_flux.md)
+* [Design Patterns - MVC MVP MVVM](https://github.com/heenamkung/TIL/blob/main/design_pattern/design_pattern_mvc.md)
 * [Design Patterns - Structural](https://github.com/heenamkung/TIL/blob/main/design_pattern/design_pattern_structural.md)
 
 </details>
