@@ -47,7 +47,7 @@ Inspired from [thoughtbot til](https://github.com/thoughtbot/til).
 <b><font size="+2">Git</font></b>
 </summary>
 
-* [Commit message conventions](https://github.com/heenamkung/TIL/blob/main/git/commit-message-conventions.md)
+* [Commit message conventions](https://github.com/heenamkung/TIL/blob/main/git/commit_message_conventions.md)
 * [Conflict: Merge vs Rebase](https://github.com/heenamkung/TIL/blob/main/git/conflict_merge_rebase.md)
 
 </details>
