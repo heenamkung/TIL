@@ -1,6 +1,20 @@
 # Python notes from coding tests
 A collection of python knowledge that I learned from studying other people's coding test solutions
 
+## Dynamic attribute Creation
+Dynamic attribute creation in Python allows you to add new attributes to instances of a class at runtime, even if these attributes were not defined in the class
+```python
+class DynamicAttributes:
+    def __init__(self, name):
+        self.name = name
+
+# Create an instance of the class
+obj = DynamicAttributes("Test Object")
+
+# Dynamically add a new attribute to the instance
+obj.new_attribute = "This is a new attribute"
+```
+This makes it extremely difficulty to debug when there is a typo (such as mixing node.next and node.nextNode)
 
 ## Data Structure
 ### Set 
@@ -98,6 +112,26 @@ result = list(map(multiply, list1, list2))
 # [10, 40, 90, 160]
 
 ```
+
+### Zip
+- Combine multiple iterables (such as lists, tuples, etc.) element-wise into tuples. 
+- If the iterables are of unequal length, zip stops creating tuples when the shortest input iterable is exhausted.
+```python
+list1 = [1, 2, 3]
+list2 = [4, 5, 6]
+
+summed_list = [x + y for x, y in zip(list1, list2)]
+print(summed_list)  # Output: [5, 7, 9]
+```
+
+```python
+keys = ['name', 'age', 'city']
+values = ['Alice', 25, 'New York']
+
+dictionary = dict(zip(keys, values))
+print(dictionary)  # Output: {'name': 'Alice', 'age': 25, 'city': 'New York'}
+```
+
 
 ### Max, Min
 1. Largest of two or more arguments
