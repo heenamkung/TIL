@@ -6,20 +6,23 @@ Design pattern consists of model, view and controller.
 View                Controller              Model       
         <== (Update)          <== (Notify)
 ```
+1 to n relation between controller and view
+
 
 ## Model
-- Application's data including database, constants and variables.
+- Handles data storage and retrieval
+- Application's data including database, constants and variables
 1. Add/edit data in view
 2. Controller creates or updates model
-- E.g. User inputs text in a square box. The input text is called a model and will eventually passed on to a variable. The square box is called the view
-- 1 to n relation between controller and view
 
 ## View 
+- Responsible for displaying data and capturing user input (frontend: html, css, js in web applications)
 - Views are UIs such as Inputbox, checkbox, textarea that users get to see depending on the model
 - Views cannot save info about the model's data and must report changes in view to the controller 
 
 ## Controller
-- A bridge that connects the model and view.
+- Processes data, interacts with model to save it in a database
+- A bridge that connects the model and view
 - Handles events and all the main business logics
 - Manages lifecycle of model and views
 

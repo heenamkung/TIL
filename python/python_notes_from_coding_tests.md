@@ -3,13 +3,35 @@ A collection of python knowledge that I learned from studying other people's cod
 
 
 ## Data Structure
-### Set 
+### Remove Duplicates: Set 
 Remove all duplicate values
 Put them in a set, as a set does not allow duplicate values
 ```python
 set([1,4,1,2,3,51,2,3,2,1,23])
 # {1, 2, 3, 4, 51, 23}
 ```
+### Iterate Dictionary with key and value
+Use items() method for retrieving both key and value
+```python
+# Define a dictionary
+my_dict = {
+    "apple": 2,
+    "banana": 3,
+    "cherry": 5
+}
+
+# Iterate through the dictionary using items()
+for key, value in my_dict.items():
+    print(f"The key is {key} and the value is {value}")
+
+#output    
+#The key is apple and the value is 2
+#The key is banana and the value is 3
+#The key is cherry and the value is 5
+```
+
+
+## String
 
 ### Join
 Combine items into one string
@@ -22,8 +44,6 @@ result = "".join(a)
 result = "/".join(a)
 # 'a/b/c/d/e'
 ```
-
-## String
 
 ### Multiply by number
 ```python
