@@ -104,18 +104,16 @@ Inspired from [thoughtbot til](https://github.com/thoughtbot/til).
 
 <details open>
 <summary> 
-<b><font size="+2">Spring</font></b>
-</summary>
-
-
-</details>
-
-<details open>
-<summary> 
 <b><font size="+2">Spring Boot</font></b>
 </summary>
 
+* [Filter, Interceptor, Spring AOP](https://github.com/heenamkung/TIL/blob/main/springboot/filter_interceptor_aop.md)
+
+* [Spring Basics](https://github.com/heenamkung/TIL/blob/main/springboot/spring_basics.md)
+
 * [Spring Boot REST API](https://github.com/heenamkung/TIL/blob/main/springboot/springboot_rest_api.md)
+
+
 
 </details>
 
